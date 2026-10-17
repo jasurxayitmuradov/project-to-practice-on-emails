@@ -1,6 +1,11 @@
 # Flask Email Contact Form
 
 A simple email contact form built with Flask and Python. This feature allows visitors to send messages directly to an email address through a form integrated into a personal website.
+## Demo
+
+Here is a demonstration of the email contact form in action:
+
+![Email Contact Form Demo](assets/email_demo.gif)
 
 ## Features
 
