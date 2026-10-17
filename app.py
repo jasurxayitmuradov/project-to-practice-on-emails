@@ -6,7 +6,7 @@ from email.message import EmailMessage
 
 load_dotenv()
 app = Flask(__name__)
-app.secret_key = os.environ.get("FLASK_SECRET_KEY", "dev-only-change-me")
+app.secret_key = os.environ["FLASK_SECRET_KEY"]
 
 @app.route('/')
 def index():
