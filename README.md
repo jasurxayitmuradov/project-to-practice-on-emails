@@ -1,50 +1,53 @@
 # Flask Email Contact Form
 
-A simple email contact form built with Flask and Python. This feature allows visitors to send messages directly to an email address through a form integrated into a personal website.
+A simple email contact form built with Flask and Python. This project demonstrates how to collect messages from a website contact form and deliver them to an email address using the **Resend API**.
+
 ## Demo
 
 Here is a demonstration of the email contact form in action:
 
-![Email Contact Form Demo](assets/email_demo.gif)
+[Email Contact Form Demo](https://github.com/jasurxayitmuradov/project-to-practice-on-emails/blob/master/assets/email_demo.gif)
+
+![Email Contact Form Demo](https://github.com/jasurxayitmuradov/project-to-practice-on-emails/raw/master/assets/email_demo.gif)
 
 ## Features
 
 - Collects the sender's name, email address, and message.
-- Sends messages using Gmail SMTP.
-- Uses environment variables to store email credentials.
+- Sends emails using the Resend API.
+- Stores API credentials and application secrets in environment variables.
 - Validates required form fields.
 - Displays success and error notifications.
 - Redirects users after form submission.
+- Supports deployment to a production hosting platform.
 
 ## Technologies Used
 
-- Python
-- Flask
-- HTML5
-- Bootstrap 5
-- SMTP (`smtplib`)
-- `email.message.EmailMessage`
-- `python-dotenv`
+- **Python** — Backend programming language.
+- **Flask** — Web framework.
+- **HTML5** — Form structure.
+- **CSS3** — Styling.
+- **Bootstrap 5** — Responsive user interface.
+- **Resend API** — Email delivery.
+- **python-dotenv** — Environment variable management.
+- **Render** — Application hosting.
 
 ## How It Works
 
 1. A visitor fills out the contact form on the website.
 2. The form submits its data to a Flask endpoint using the HTTP `POST` method.
-3. Flask validates the submitted fields and creates an email message.
-4. Python connects to Gmail's SMTP server and authenticates the sender.
-5. The email is submitted to Gmail for delivery.
-6. The website displays a success or error notification.
+3. Flask validates the submitted fields.
+4. The application creates an email request and sends it to the Resend API.
+5. Resend processes the request for email delivery.
+6. The website displays a success or error notification and redirects the visitor.
 
 ## Installation
 
 ### 1. Clone the repository
 
 ```bash
-git clone YOUR_REPOSITORY_URL
-cd YOUR_PROJECT_DIRECTORY
+git clone https://github.com/jasurxayitmuradov/project-to-practice-on-emails.git
+cd project-to-practice-on-emails
 ```
-
-Replace the placeholders with your repository URL and project directory.
 
 ### 2. Create and activate a virtual environment
 
@@ -52,13 +55,13 @@ Replace the placeholders with your repository URL and project directory.
 python -m venv .venv
 ```
 
-Windows:
+**Windows**
 
 ```bash
 .venv\Scripts\activate
 ```
 
-Linux or macOS:
+**Linux or macOS**
 
 ```bash
 source .venv/bin/activate
@@ -67,7 +70,13 @@ source .venv/bin/activate
 ### 3. Install dependencies
 
 ```bash
-pip install Flask python-dotenv
+pip install Flask python-dotenv resend
+```
+
+Alternatively, if the project includes a `requirements.txt` file:
+
+```bash
+pip install -r requirements.txt
 ```
 
 ### 4. Configure environment variables
@@ -76,12 +85,17 @@ Create a `.env` file in the project root:
 
 ```env
 FLASK_SECRET_KEY=your_random_secret_key
-SENDER_EMAIL=your_gmail@gmail.com
-SENDER_PASSWORD=your_google_app_password
-RECEIVER_EMAIL=your_gmail@gmail.com
+RESEND_API_KEY=your_resend_api_key
+RECEIVER_EMAIL=your_email@example.com
 ```
 
-Use a Google App Password for SMTP authentication. Do not use your regular Gmail password.
+Replace the example values with your actual configuration.
+
+- `FLASK_SECRET_KEY` — Used to secure Flask sessions and flash messages.
+- `RESEND_API_KEY` — Your Resend API key.
+- `RECEIVER_EMAIL` — The email address that receives contact form submissions.
+
+Never commit your `.env` file or expose your API key in a public repository.
 
 ### 5. Run the application
 
@@ -89,21 +103,31 @@ Use a Google App Password for SMTP authentication. Do not use your regular Gmail
 python app.py
 ```
 
-Open the website in your browser and navigate to the contact page to test the form.
+Open `http://127.0.0.1:5000` in your browser and navigate to the contact page to test the form.
+
+## Deployment
+
+The application is deployed on Render.
+
+**Live Demo:** https://project-to-practice-on-emails.onrender.com/
+
+To deploy your own instance, configure the required environment variables in your hosting platform's environment settings.
 
 ## Security
 
-- Keep email credentials and secret keys out of source control.
+- Store API keys and secret keys in environment variables.
 - Add `.env` and `.venv/` to `.gitignore`.
-- Do not enable Flask debug mode in production.
-- Consider adding CSRF protection and rate limiting before deploying publicly.
+- Validate and safely handle all contact form inputs.
+- Avoid enabling Flask debug mode in production.
+- Consider implementing CSRF protection and rate limiting to prevent abuse.
+- Never expose your Resend API key in client-side code.
 
 ## Integration
 
-This contact form is designed to be integrated into a Flask-based personal website. Its email-sending functionality can also be adapted for other Flask applications.
+This contact form can be integrated into other Flask applications that need a simple email notification feature. The email delivery logic can be extended with additional validation, rate limiting, and error handling.
 
 ## Author
 
-Jasur Xayitmurodov
+**Jasur Xayitmurodov**
 
-GitHub: [jasurxayitmuradov](https://github.com/jasurxayitmuradov)
+GitHub: [@jasurxayitmuradov](https://github.com/jasurxayitmuradov)
