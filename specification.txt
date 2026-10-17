@@ -1,0 +1,24 @@
+HTML tags:
+1. nav
+2. div
+3. a
+4. button
+5. span
+6. h1
+7. p
+8. ul
+9. li
+10. script
+
+CSS properties:
+1. font-family
+2. margin-bottom
+3. font-size
+4. line-height
+5. max-width
+
+JavaScript:
+Used JavaScript to make the "Say hello" button interactive by changing text on the page when the button is clicked.
+
+Bootstrap:
+Used Bootstrap for the responsive navigation bar, buttons, containers, and responsive layout.
