@@ -1,22 +1,123 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+        <link href="styles.css" rel="stylesheet">
+        <title>My Webpage</title>
 </head>
 <body>
-
     <div>
-        <form action="/contact" method="POST">
-            <h3>You can send me the messages via email. Please your write your message below</h3>
-            <label for="message">Message:</label>
-            <br>
-            <textarea id="message" name="message"  rows="6" required></textarea>
-            <br>
-            <button type="submit">submit</button>
-            <button type="reset">reset</button>
-        </form>
+        <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
+            <div class="container">
+                <a class="navbar-brand" href="/">
+                    Jasur
+                </a>
+                <button
+                    class="navbar-toggler"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#navbarNav"
+                    aria-controls="navbarNav"
+                    aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+            </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+
+                    <div class="navbar-nav">
+
+                        <a class="nav-link" href="/" aria-current="page">
+                            Home
+                        </a>
+
+                        <a class="nav-link" href="/about">
+                            About
+                        </a>
+
+                        <a class="nav-link" href="/hobbies">
+                            Hobbies
+                        </a>
+
+                        <a class="nav-link" href="/projects">
+                            Projects
+                        </a>
+                        <a class="nav-link active" href="/contactme">
+                            Contact Me
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        </nav>
+        <main class="contact-section">
+            <div class="container">
+                <div class="contact-card">
+                    <div class="text-center mb-4">
+                        <span class="contact-label">GET IN TOUCH</span>
+                        <h1 class="contact-title">Contact Me</h1>
+                        <p class="contact-description">
+                            Have a question or an interesting project?
+                            I'd love to hear from you.
+                        </p>
+                    </div>
+
+                    {% with messages = get_flashed_messages(with_categories=true) %}
+                        {% for category, message in messages %}
+                            <div class="alert alert-{{ 'success' if category == 'success' else 'danger' }} alert-dismissible fade show" role="alert">
+                                {{ message }}
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                        {% endfor %}
+                    {% endwith %}
+
+                    <form action="{{ url_for('contact') }}" method="POST">
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Your name</label>
+                            <input
+                                type="text"
+                                class="form-control"
+                                id="name"
+                                name="name"
+                                placeholder="Enter your name"
+                                autocomplete="name"
+                                required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email address</label>
+                            <input
+                                type="email"
+                                class="form-control"
+                                id="email"
+                                name="email"
+                                placeholder="you@example.com"
+                                autocomplete="email"
+                                required>
+                        </div>
+
+                        <div class="mb-4">
+                            <label for="message" class="form-label">Your message</label>
+                            <textarea
+                                class="form-control"
+                                id="message"
+                                name="message"
+                                rows="5"
+                                placeholder="Write your message here..."
+                                required></textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary w-100 send-button">
+                            Send Message
+                        </button>
+                    </form>
+
+                    <p class="privacy-note text-center mt-3 mb-0">
+                        Your message will be sent directly to my email.
+                    </p>
+                </div>
+            </div>
+        </main>
     </div>
 </body>
 </html>
