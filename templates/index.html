@@ -22,27 +22,29 @@
                     aria-expanded="false"
                     aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
-                </button>
+            </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
 
                     <div class="navbar-nav">
 
-                        <a class="nav-link" href="index.html">
+                        <a class="nav-link active" href="/" aria-current="page">
                             Home
                         </a>
 
-                        <a class="nav-link active" href="about.html" aria-current="page">
+                        <a class="nav-link" href="/about">
                             About
                         </a>
 
-                        <a class="nav-link" href="hobbies.html">
+                        <a class="nav-link" href="/hobbies">
                             Hobbies
                         </a>
 
-                        <a class="nav-link" href="projects.html">
+                        <a class="nav-link" href="/projects">
                             Projects
                         </a>
-
+                        <a class="nav-link" href="/contactme">
+                            Contact Me
+                        </a>
                     </div>
 
                 </div>
@@ -62,12 +64,17 @@
                 </div> -->
             </div>
         </nav>
-        <div class="container">
-            <h1>About Me</h1>
+        <div class="container home-content">
+            <h1>Welcome to my homepage</h1>
             <p>
                 Hello! My name is Jasur
                 I am a software engineering student
             </p>
+            <button id="helloButton" class="btn btn-primary">
+                Say hello
+            </button>
+            <p id="helloMessage"></p>
         </div>
+        <script src="script.js"></script>
     </body>
 </html>
